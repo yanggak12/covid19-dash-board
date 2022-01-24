@@ -1,7 +1,7 @@
 interface Props {
-  title: string;
-  today: number;
-  total: number;
+  title: string | undefined;
+  today: number | undefined;
+  total: number | undefined;
 }
 
 const NumCard: React.FC<Props> = ({ title, today, total }) => {

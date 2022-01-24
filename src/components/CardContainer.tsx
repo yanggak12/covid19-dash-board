@@ -1,16 +1,26 @@
+import { getByCountryType } from '../utils/types';
 import NumCard from './NumCard';
 
 interface Props {
-  data: string;
+  data: getByCountryType | undefined;
 }
 
 const CardContainer: React.FC<Props> = ({ data }) => {
+  const cardArr = [
+    { title: 'CASES', today: data?.todayCases, total: data?.cases },
+    { title: 'DEATHS', today: data?.todayDeaths, total: data?.deaths },
+    { title: 'RECOVERED', today: data?.todayRecovered, total: data?.recovered },
+  ];
   return (
     <>
       <div className="container">
-        <NumCard title="CASES" today={10} total={100} />
-        <NumCard title="DEATHS" today={10} total={100} />
-        <NumCard title="RECOVERED" today={10} total={100} />
+        {data ? (
+          cardArr.map((val, idx) => (
+            <NumCard key={idx} title={val.title} today={val.today} total={val.total} />
+          ))
+        ) : (
+          <div className="loading">Loading...</div>
+        )}
       </div>
       <style jsx>{`
         .container {
@@ -18,7 +28,9 @@ const CardContainer: React.FC<Props> = ({ data }) => {
           flex-direction: row;
           justify-content: space-between;
         }
-        @media (max-width: 950px) {
+        .loading {
+          margin: auto;
+          text-align: center;
         }
       `}</style>
     </>
