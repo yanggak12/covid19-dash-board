@@ -25,12 +25,17 @@ const Home: React.VFC = () => {
       })
       .catch((e) => console.log(e));
   }, []);
-
+  const today = {
+    year: new Date().getFullYear(),
+    month: new Date().getMonth() + 1,
+    date: new Date().getDate(),
+  };
+  const todayString = today.year + '년 ' + today.month + '월 ' + today.date + '일';
   return (
     <div>
       <Seo title="Home" />
       <div className="page">
-        <h2>COVID-19 대시보드</h2>
+        <h2>{todayString}</h2>
         <CardContainer data={covidData} />
         <div className="chartContainer">
           <ChartBar
