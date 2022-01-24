@@ -8,13 +8,14 @@ const NavBar = () => {
   return (
     <nav>
       <Link href="/">
-        <a>
+        <a className="home">
           <Image
             src={router.pathname === '/' ? '/monit-logo-blue.png' : '/monit-logo.png'}
             className="logo"
             width={30}
             height={30}
           />
+          <h3 id="title">COVID-19 Dashboard</h3>
         </a>
       </Link>
       <Link href="/neighbor">
@@ -30,8 +31,16 @@ const NavBar = () => {
           align-items: center;
           justify-content: space-between;
         }
+        #title {
+          margin: 0 0 0 10px;
+        }
         a {
           text-decoration: none;
+        }
+        .home {
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
         .inactive :hover {
           opacity: 0.5;

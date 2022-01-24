@@ -7,9 +7,9 @@ interface Props {
 
 const CardContainer: React.FC<Props> = ({ data }) => {
   const cardArr = [
-    { title: '확진자', today: data?.todayCases, total: data?.cases },
-    { title: '사망', today: data?.todayDeaths, total: data?.deaths },
-    { title: '완치', today: data?.todayRecovered, total: data?.recovered },
+    { title: '확진자', today: data ? data.todayCases : 0, total: data ? data.cases : 0 },
+    { title: '사망', today: data ? data.todayDeaths : 0, total: data ? data.deaths : 0 },
+    { title: '완치', today: data ? data.todayRecovered : 0, total: data ? data.recovered : 0 },
   ];
   return (
     <>
