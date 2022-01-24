@@ -9,18 +9,13 @@ const NavBar = () => {
     <nav>
       <Link href="/">
         <a className="home">
-          <Image
-            src={router.pathname === '/' ? '/monit-logo-blue.png' : '/monit-logo.png'}
-            className="logo"
-            width={30}
-            height={30}
-          />
+          <Image src="/monit-logo-blue.png" className="logo" width={30} height={30} />
           <h3 id="title">COVID-19 Dashboard</h3>
         </a>
       </Link>
-      <Link href="/neighbor">
-        <a className={router.pathname === '/neighbor' ? 'active' : 'inactive'}>
-          <h3 className="neighbor">이웃나라 상황</h3>
+      <Link href="/korea">
+        <a className={router.pathname === '/korea' ? 'active' : 'inactive'}>
+          <h3 className="route">Korea</h3>
         </a>
       </Link>
       <style jsx>{`
@@ -48,7 +43,9 @@ const NavBar = () => {
         .active {
           color: #11cdef;
         }
-        .neighbor {
+        .route {
+          min-width: 100px;
+          text-align: center;
           padding: 5px;
           border: 0.2rem solid;
           border-radius: 0.5rem;
