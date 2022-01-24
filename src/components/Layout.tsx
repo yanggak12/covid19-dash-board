@@ -8,12 +8,16 @@ const Layout: React.FC = ({ children }) => {
         <NavBar />
         <div>{children}</div>
       </div>
-      <style jsx>{`
+      <style jsx global>{`
         .container {
           margin-top: 1rem;
           display: flex;
           flex-direction: column;
           justify-content: center;
+        }
+        .page {
+          width: 80%;
+          margin: auto;
         }
       `}</style>
     </>

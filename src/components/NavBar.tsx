@@ -2,8 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
-import logo from '../assets/img/monit-logo.png';
-import logoFill from '../assets/img/monit-logo-blue.png';
 
 const NavBar = () => {
   const router = useRouter();
@@ -11,12 +9,17 @@ const NavBar = () => {
     <nav>
       <Link href="/">
         <a>
-          <Image src={router.pathname === '/' ? logoFill : logo} width={50} height={50} />
+          <Image
+            src={router.pathname === '/' ? '/monit-logo-blue.png' : '/monit-logo.png'}
+            className="logo"
+            width={30}
+            height={30}
+          />
         </a>
       </Link>
       <Link href="/neighbor">
-        <a className={router.pathname === '/neighbor' ? 'active' : ''}>
-          <h1>이웃나라 상황보기</h1>
+        <a className={router.pathname === '/neighbor' ? 'active' : 'inactive'}>
+          <h3 className="neighbor">이웃나라 상황</h3>
         </a>
       </Link>
       <style jsx>{`
@@ -26,17 +29,27 @@ const NavBar = () => {
           align-self: center;
           align-items: center;
           justify-content: space-between;
-          //justify-content: center;
         }
         a {
           text-decoration: none;
-          padding: 0 10px;
         }
-        a :hover {
-          color: skyblue;
+        .inactive :hover {
+          opacity: 0.5;
         }
         .active {
           color: #11cdef;
+        }
+        .neighbor {
+          padding: 5px;
+          border: 0.2rem solid;
+          border-radius: 0.5rem;
+        }
+        @media (max-width: 700px) {
+          .neighbor {
+            font-size: 15px;
+            border: 0.1rem solid;
+            border-radius: 0.5rem;
+          }
         }
       `}</style>
     </nav>

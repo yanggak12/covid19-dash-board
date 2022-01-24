@@ -1,11 +1,16 @@
+import CardContainer from '../components/CardContainer';
 import Seo from '../components/Seo';
 
 const Home = () => {
   return (
     <div>
       <Seo title="Home" />
-      <h1>COVID-19 대시보드</h1>
+      <div className="page">
+        <h2>COVID-19 대시보드</h2>
+        <CardContainer data="temp" />
+      </div>
     </div>
   );
 };
+
 export default Home;
