@@ -30,3 +30,19 @@ export interface getByCountryType {
   recoveredPerOneMillion: number;
   criticalPerOneMillion: number;
 }
+
+export interface getHistoricalType {
+  country: string;
+  province: [string];
+  timeline: {
+    cases: { [date: string]: [number] };
+    deaths: { [date: string]: [number] };
+    recovered: { [date: string]: [number] };
+  };
+}
+
+export interface timeLineType {
+  cases: { [date: string]: [number] };
+  deaths: { [date: string]: [number] };
+  recovered: { [date: string]: [number] };
+}

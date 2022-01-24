@@ -1,9 +1,9 @@
 import CountUp from 'react-countup';
 
 interface Props {
-  title: string | undefined;
-  today: number | undefined;
-  total: number | undefined;
+  title: string;
+  today: number;
+  total: number;
 }
 
 const NumCard: React.FC<Props> = ({ title, today, total }) => {
