@@ -1,3 +1,5 @@
+import CountUp from 'react-countup';
+
 interface Props {
   title: string | undefined;
   today: number | undefined;
@@ -7,9 +9,15 @@ interface Props {
 const NumCard: React.FC<Props> = ({ title, today, total }) => {
   return (
     <div className="container">
-      <h3 id="title">{title}</h3>
+      <div className="desc">
+        <h3 id="title">{title}</h3>
+        <span id="total">
+          <CountUp end={total ? total : 0} duration={1} />
+        </span>
+      </div>
+
       <div id="count">
-        {today} / {total}
+        <CountUp end={today ? today : 0} duration={1} />
       </div>
 
       <style jsx>{`
@@ -21,8 +29,15 @@ const NumCard: React.FC<Props> = ({ title, today, total }) => {
           border-radius: 1rem;
           background-color: #393939;
         }
+        .desc {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 90%;
+        }
+
         #title {
-          margin: 10px 0 10px 10px;
+          margin: 12px 0 10px 20px;
         }
         #count {
           font-size: 2rem;
@@ -34,20 +49,25 @@ const NumCard: React.FC<Props> = ({ title, today, total }) => {
             height: 70px;
           }
           #title {
-            font-size: 0.5rem;
+            margin: 6px 0 8px 10px;
+            font-size: 1rem;
           }
           #count {
-            font-size: 1rem;
+            font-size: 1.5rem;
             font-weight: 700;
             text-align: center;
+          }
+          #total {
+            display: none;
           }
         }
         @media (max-width: 400px) {
           #title {
-            font-size: 1px;
+            margin: 5px;
+            font-size: 0.8rem;
           }
           #count {
-            font-size: 5px;
+            font-size: 1.2rem;
             font-weight: 700;
             text-align: center;
           }
