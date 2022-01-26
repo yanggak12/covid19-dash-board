@@ -33,13 +33,15 @@ const ChartBar: React.FC<Props> = ({ title, chartData, color }) => {
   const caseArr = chartData && Object.values(chartData).slice(1);
   let casesNum = chartData ? (Object.values(chartData)[0] as number) : 0;
   const data = {
-    labels: labels?.map((v) => v.replace('/', '월 ').split('/')[0] + '일'),
+    labels: labels?.map((v, idx) => {
+      if (idx === labels.length - 1) return '어제';
+      return v.replace('/', '월 ').split('/')[0] + '일';
+    }),
     datasets: [
       {
         label: title,
         data: caseArr?.map((v: number) => {
           const value = v - casesNum;
-          console.log(value);
           casesNum += value;
           return value;
         }),
