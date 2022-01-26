@@ -1,10 +1,12 @@
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import DropdownMenu from './DropdownMenu';
 
 const NavBar = () => {
   const router = useRouter();
+
   return (
     <nav>
       <Link href="/">
@@ -13,11 +15,10 @@ const NavBar = () => {
           <h3 id="title">COVID-19 Dashboard</h3>
         </a>
       </Link>
-      <Link href="/korea">
-        <a className={router.pathname === '/korea' ? 'active' : 'inactive'}>
-          <h3 className="route">Korea</h3>
-        </a>
-      </Link>
+      <div className="dropdown">
+        <DropdownMenu />
+      </div>
+
       <style jsx>{`
         nav {
           width: 80%;
@@ -29,6 +30,8 @@ const NavBar = () => {
         #title {
           margin: 0 0 0 10px;
         }
+        .dropdown {
+        }
         a {
           text-decoration: none;
         }
@@ -37,25 +40,8 @@ const NavBar = () => {
           align-items: center;
           justify-content: center;
         }
-        .inactive :hover {
-          opacity: 0.5;
-        }
-        .active {
-          color: #11cdef;
-        }
-        .route {
-          min-width: 100px;
-          text-align: center;
-          padding: 5px;
-          border: 0.2rem solid;
-          border-radius: 0.5rem;
-        }
-        @media (max-width: 700px) {
-          .neighbor {
-            font-size: 15px;
-            border: 0.1rem solid;
-            border-radius: 0.5rem;
-          }
+        .dropdown {
+          color: 'blue';
         }
       `}</style>
     </nav>
