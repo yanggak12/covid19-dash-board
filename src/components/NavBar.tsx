@@ -15,7 +15,7 @@ const NavBar = () => {
           <h3 id="title">COVID-19 Dashboard</h3>
         </a>
       </Link>
-      <div className="dropdown">
+      <div className={router.pathname === '/' ? 'inactive' : 'dropdown'}>
         <DropdownMenu />
       </div>
 
@@ -30,6 +30,10 @@ const NavBar = () => {
         #title {
           margin: 0 0 0 10px;
         }
+        .inactive {
+          display: none;
+        }
+
         .dropdown {
         }
         a {
