@@ -6,6 +6,7 @@ import DropdownMenu from './DropdownMenu';
 
 const NavBar = () => {
   const router = useRouter();
+
   return (
     <nav>
       <Link href="/">
@@ -32,6 +33,7 @@ const NavBar = () => {
         .inactive {
           display: none;
         }
+
         .dropdown {
         }
         a {
