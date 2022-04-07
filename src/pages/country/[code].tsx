@@ -17,6 +17,9 @@ const DashBoard: React.VFC = () => {
   const [historicCase, setHistoricCase] = useState<{ [date: string]: [number] }>();
   const [historicDeath, setHistoricDeath] = useState<{ [date: string]: [number] }>();
   const [lastDays, setLastDays] = useState(8);
+  const lastDaysHandler = (lastDay: number) => {
+    setLastDays(lastDay);
+  };
   useEffect(() => {
     getByCountries({ country: path })
       .then((response) => response.data)
@@ -45,11 +48,7 @@ const DashBoard: React.VFC = () => {
         <h3>{todayString}</h3>
         <CardContainer data={covidData} />
         <div className="chartContainer">
-          <ChartRange
-            lastDays={lastDays}
-            onPlusClick={() => setLastDays(lastDays + 1)}
-            onMinusClick={() => setLastDays(lastDays - 1)}
-          />
+          <ChartRange lastDays={lastDays} lastDaysHandler={lastDaysHandler} />
           <ChartBar title="확진자수" chartData={historicCase} color="rgba(255, 99, 132, 0.5)" />
           <ChartBar title="사망자수" chartData={historicDeath} color="rgba(254, 213, 150, 0.5)" />
         </div>

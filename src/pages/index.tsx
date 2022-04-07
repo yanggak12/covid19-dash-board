@@ -20,7 +20,7 @@ const Home = () => {
             <h1>COVID-19 DASH BOARD</h1>
           </div>
         ) : (
-          <div>
+          <div className="countries">
             {countryData.map((val, idx) => (
               <div className="itemContainer" key={idx}>
                 <Link href={`/country/${val.code}`}>
@@ -39,8 +39,9 @@ const Home = () => {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          height: 70vh;
+          height: 100vh;
         }
+
         .index {
           text-align: center;
           display: flex;
